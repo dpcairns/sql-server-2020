@@ -31,31 +31,50 @@ describe('app routes', () => {
       return client.end(done);
     });
 
-  test('returns animals', async() => {
+    test('returns banjos', async() => {
 
-    const expectation = [
-      {
-        'id': 1,
-        'name': 'bessie',
-        'coolfactor': 3,
-        'owner_id': 1
-      },
-      {
-        'id': 2,
-        'name': 'jumpy',
-        'coolfactor': 4,
-        'owner_id': 1
-      },
-      {
-        'id': 3,
-        'name': 'spot',
-        'coolfactor': 10,
-        'owner_id': 1
-      }
-    ];
+      const expectation = [
+        {
+          id: 1,
+          brand: 'gold tone',
+          noise_level: 3,
+          owner_id: 1
+        },
+        {
+          id: 2,
+          brand: 'fender',
+          noise_level: 4,
+          owner_id: 1
+        },
+        {
+          id: 3,
+          brand: 'deering',
+          noise_level: 10,
+          owner_id: 1,
+        }
+      ];
+      
+
+      const data = await fakeRequest(app)
+        .get('/banjos')
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      expect(data.body).toEqual(expectation);
+    });
+  });
+
+  test('returns a single banjo', async() => {
+
+    const expectation = {
+      id: 1,
+      brand: 'gold tone',
+      noise_level: 3,
+      owner_id: 1
+    };
 
     const data = await fakeRequest(app)
-      .get('/animals')
+      .get('/banjos/1')
       .expect('Content-Type', /json/)
       .expect(200);
 
