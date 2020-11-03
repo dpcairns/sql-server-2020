@@ -91,7 +91,7 @@ describe('app routes', () => {
         .post('/banjos')
         .send({
           brand: 'best banjo inc',
-          noise_level: 5,
+          noise_level: 3,
           owner_id: 1
         })
         .expect('Content-Type', /json/)
