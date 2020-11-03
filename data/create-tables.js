@@ -11,18 +11,16 @@ async function run() {
     await client.connect();
 
     // run a query to create tables
-
-    // data model, SQL Schema, SQL Table definition
     await client.query(`
                 CREATE TABLE users (
                     id SERIAL PRIMARY KEY,
                     email VARCHAR(256) NOT NULL,
                     hash VARCHAR(512) NOT NULL
                 );           
-                CREATE TABLE banjos (
+                CREATE TABLE animals (
                     id SERIAL PRIMARY KEY NOT NULL,
-                    brand VARCHAR(512) NOT NULL,
-                    noise_level INTEGER NOT NULL,
+                    name VARCHAR(512) NOT NULL,
+                    cool_factor INTEGER NOT NULL,
                     owner_id INTEGER NOT NULL REFERENCES users(id)
             );
         `);
