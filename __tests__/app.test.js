@@ -62,22 +62,22 @@ describe('app routes', () => {
 
       expect(data.body).toEqual(expectation);
     });
+
+    test('returns a single banjo', async() => {
+      const expectation = {
+        id: 1,
+        brand: 'gold tone',
+        noise_level: 3,
+        owner_id: 1
+      };
+  
+      const data = await fakeRequest(app)
+        .get('/banjos/1')
+        .expect('Content-Type', /json/)
+        .expect(200);
+  
+      expect(data.body).toEqual(expectation);
+    });
   });
 
-  test('returns a single banjo', async() => {
-
-    const expectation = {
-      id: 1,
-      brand: 'gold tone',
-      noise_level: 3,
-      owner_id: 1
-    };
-
-    const data = await fakeRequest(app)
-      .get('/banjos/1')
-      .expect('Content-Type', /json/)
-      .expect(200);
-
-    expect(data.body).toEqual(expectation);
-  });
 });
