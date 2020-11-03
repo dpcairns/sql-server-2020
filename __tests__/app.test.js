@@ -78,5 +78,33 @@ describe('app routes', () => {
   
       expect(data.body).toEqual(expectation);
     });
+
+    test.only('adds a banjo to the DB and returns it', async() => {
+      const expectation = {
+        id: 4,
+        brand: 'best banjo inc',
+        noise_level: 5,
+        owner_id: 1
+      };
+  
+      const data = await fakeRequest(app)
+        .post('/banjos')
+        .send({
+          brand: 'best banjo inc',
+          noise_level: 5,
+          owner_id: 1
+        })
+        .expect('Content-Type', /json/)
+        .expect(200);
+  
+      const allBanjos = await fakeRequest(app)
+        .get('/banjos')
+        .expect('Content-Type', /json/)
+        .expect(200);
+  
+
+      expect(data.body).toEqual(expectation);
+      expect(allBanjos.body.length).toEqual(4);
+    });
   });
 });
