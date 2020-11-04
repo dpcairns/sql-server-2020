@@ -82,15 +82,15 @@ describe('app routes', () => {
     test.only('adds a banjo to the DB and returns it', async() => {
       const expectation = {
         id: 4,
-        brand: 'best banjo inc',
-        noise_level: 5,
+        brand_id: 'best banjo inc',
+        noise_level: 2,
         owner_id: 1
       };
   
       const data = await fakeRequest(app)
         .post('/banjos')
         .send({
-          brand: 'best banjo inc',
+          brand_id: 2,
           noise_level: 5,
           owner_id: 1
         })
