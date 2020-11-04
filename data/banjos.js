@@ -1,14 +1,14 @@
 module.exports = [
   {
-    brand: 'gold tone',
+    brand_id: 1,
     noise_level: 3,
   },
   {
-    brand: 'fender',
+    brand_id: 2,
     noise_level: 4,
   },
   {
-    brand: 'deering',
+    brand_id: 3,
     noise_level: 10,
   }
 ];
