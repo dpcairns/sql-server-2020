@@ -1,12 +1,12 @@
 module.exports = [
   {
-    name: 'gold_tone'
+    name: 'Gold Tone'
   },
   {
-    name: 'fender'
+    name: 'Fender'
   },
   { 
-    name: 'deering'
+    name: 'Deering'
   }
 ];
   
